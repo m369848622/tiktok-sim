@@ -4,10 +4,10 @@
 #include <dlfcn.h>
 #include <android/log.h>
 
-extern "C" {
-#include "dlfcn/dlfcn_compat.h"
-#include "dlfcn/dlfcn_nougat.h"
-}
+//extern "C" {
+//#include "dlfcn/dlfcn_compat.h"
+//#include "dlfcn/dlfcn_nougat.h"
+//}
 
 //extern "C" JNIEXPORT jstring JNICALL
 //Java_com_tiktok_xp_MainActivity_stringFromJNI(
@@ -18,6 +18,8 @@ extern "C" {
 //}
 
 static HookFunType hook_func = nullptr;
+static int passcur = 0;
+static int passptr = 0;
 
 pid_t (*backup_fork)(int a1, int a2, int a3);
 
@@ -31,14 +33,21 @@ pid_t fake_callback(int a1, int a2) {
 
 pid_t fake_verify(int a1, int a2, int a3) {
     __android_log_print(ANDROID_LOG_INFO, "nativehook", "fake_verify success");
-    __android_log_print(ANDROID_LOG_INFO, "nativehook", "ptr %p", (void *) a3);
-    if ((a3 & 0x00000fb5) != 0x00000fb5) {
+//    if ((a3 & 0x00000fb5) != 0x00000fb5&&(a3 & 0x0000006d) != 0x0000006d&&(a3 & 0x0000018d) != 0x0000018d) {
+    passcur++;
+    if (passcur == 3) {
+        passptr = a3;
+    }
+    if (passptr != a3) {
+        __android_log_print(ANDROID_LOG_INFO, "nativehook", "ptr %p", (void *) a3);
         hook_func((void *) a3, (void *) fake_callback, (void **) &backup_callback);
     }
+//    }
     return backup_fork(a1, 0, a3);
 }
 
 void on_library_loaded(const char *name, void *handle) {
+    __android_log_print(ANDROID_LOG_INFO, "nativehook", "name = %s", name);
     if (std::string(name).find("libsscronet.so") != std::string::npos) {
         __android_log_print(ANDROID_LOG_INFO, "nativehook", "name = %s success!", name);
         void *hookfork = dlsym(handle, "SSL_CTX_set_custom_verify");

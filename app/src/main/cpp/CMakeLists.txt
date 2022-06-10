@@ -19,8 +19,8 @@ add_library( # Sets the name of the library.
 
         # Sets the library as a shared library.
         SHARED
-        dlfcn/dlfcn_compat.c
-        dlfcn/dlfcn_nougat.c
+#        dlfcn/dlfcn_compat.c
+#        dlfcn/dlfcn_nougat.c
         # Provides a relative path to your source file(s).
         native-lib.cpp)
 

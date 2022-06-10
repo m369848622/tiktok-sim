@@ -31,6 +31,7 @@ public class main implements IXposedHookLoadPackage {
             return;
         }
         XposedBridge.log("tiktok start->" + packageName);
+
         XposedHelpers.findAndHookMethod(ContextWrapper.class, "attachBaseContext", Context.class, new XC_MethodHook() {
             @SuppressLint("UnsafeDynamicallyLoadedCode")
             @Override
@@ -46,10 +47,12 @@ public class main implements IXposedHookLoadPackage {
                 } catch (Throwable e) {
                     try {
                         System.load(Objects.requireNonNull(getMySoPath("64")));
-                        XposedBridge.log("System.load hookkkkk successful");
+                        XposedBridge.log("System.load hookkkkk 64 successful");
                     } catch (Throwable e2) {
+                        XposedBridge.log(e2);
                         try {
                             System.load(Objects.requireNonNull(getMySoPath("")));
+                            XposedBridge.log("System.load hookkkkk successful");
                         } catch (Throwable e3) {
                             XposedBridge.log("System.load hookkkkk failed");
                             XposedBridge.log(e3);
