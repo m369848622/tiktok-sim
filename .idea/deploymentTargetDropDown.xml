@@ -7,11 +7,19 @@
         <deviceKey>
           <Key>
             <type value="SERIAL_NUMBER" />
+<<<<<<< HEAD
             <value value="192.168.8.75:5555" />
+=======
+            <value value="521388ec" />
+>>>>>>> cd6a03d46a5b00f8d23e836643eab99cc200b6d4
           </Key>
         </deviceKey>
       </Target>
     </runningDeviceTargetSelectedWithDropDown>
+<<<<<<< HEAD
     <timeTargetWasSelectedWithDropDown value="2022-06-08T02:04:16.100622100Z" />
+=======
+    <timeTargetWasSelectedWithDropDown value="2022-06-09T19:28:26.798804Z" />
+>>>>>>> cd6a03d46a5b00f8d23e836643eab99cc200b6d4
   </component>
 </project>

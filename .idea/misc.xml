@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="..\:/Users/Administrator/Desktop/project/tiktok/tiktok-xp/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
       </map>
     </option>
@@ -12,5 +13,11 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+=======
+        <entry key="..\:/Users/Administrator/Desktop/tiktok-sim/app/src/main/res/layout/activity_main.xml" value="0.21458333333333332" />
+      </map>
+    </option>
+>>>>>>> cd6a03d46a5b00f8d23e836643eab99cc200b6d4
   </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>
