@@ -19,7 +19,7 @@ public class main implements IXposedHookLoadPackage {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
 //                super.afterHookedMethod(param);
-                param.setResult("");
+                param.setResult("AA");
             }
         });
 
